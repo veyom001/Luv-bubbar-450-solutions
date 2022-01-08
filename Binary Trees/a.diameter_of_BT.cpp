@@ -1,9 +1,12 @@
 int height(struct Node* root){
-    if(!root)
-        return 0;
-
-    else
-        return (1+max(height(root->left),height(root->right)));
+     if(!root)return 0;
+    int ans1=1,ans2=1;
+    if(root->left)
+        ans1=1+height1(root->left);
+    
+    if(root->right)
+        ans2=1+height1(root->right);
+    return max(ans1,ans2);
 }
 int diameter(struct Node* root) {
     // code here
