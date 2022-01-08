@@ -4,13 +4,14 @@ class Solution {
     int height(struct Node *root)
 {
     if(!root)return 0;
-    int ans1=0,ans2=0;
+    int ans1=1,ans2=1;
 
 
 
-    if(root->left)ans1=height(root->left);
+    if(root->left)ans1=1+height(root->left);
     
-    if(root->right)ans2=height(root->right);
+    if(root->right)ans2=1+height(root->right);
+      
     return max(ans1,ans2);
     
 }
