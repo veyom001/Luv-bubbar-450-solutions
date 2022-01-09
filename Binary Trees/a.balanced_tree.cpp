@@ -1,19 +1,20 @@
-int height(Node* root){
-        // code here 
-        if(root==NULL)
-            return 0;
-        int lh=height(root->left);
-        int rh=height(root->right);
-        if(abs(rh-lh)>1||lh==-1||rh==-1)
-            return -1;
-        return 1+max(lh,rh);
-        
-    }
-    
-    bool isBalanced(Node *root)
-    {
-        //  Your Code here
-        int h = height(root);
-        return h!=-1?true:false;
-        
-    }
+ int height(Node *root){
+       return (root==NULL)?0:(1+max(height(root->left),height(root->right)));
+   }
+   
+   bool isBalanced(Node *root)
+   {
+       if(root==NULL){
+           return true;
+       }
+       
+     int LH=height(root->left);
+     int RH=height(root->right);
+
+     if(abs(LH-RH)>1)
+         return false;
+     
+     else
+         return (isBalanced(root->left)&&isBalanced(root->right));
+
+   }
