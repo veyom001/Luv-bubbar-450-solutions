@@ -2,6 +2,7 @@ static void insert_at_bottom(char x){
 
     if(st.isEmpty())
         st.push(x);
+        return;
 
     else{
         /* All items are held in Function Call Stack until we
