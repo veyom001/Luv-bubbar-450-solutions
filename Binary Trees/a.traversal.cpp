@@ -36,7 +36,7 @@ void inorder(node* root){
             // otherwise, if the current node is null, pop an element from the stack,
             // print it, and finally set the current node to its right child
             front = s.top();
-            stack.pop();
+            s.pop();
             cout << front->data << " ";
             front = front->right;
         }
@@ -53,8 +53,8 @@ void inorder(node* root){
   if(!root)
     return;
   cout << root->data;
-  inorder(root->left); 
-  inorder(root->right);
+  preorder(root->left); 
+  preorder(root->right);
 }
 
 ii)iterative
@@ -76,12 +76,12 @@ void preorder(node* root){
         
             // push the right child of the popped node into the stack
             if (front->right) {
-              stack.push(front->right);
+              s.push(front->right);
             }
  
             // push the left child of the popped node into the stack
             if (front->left) {
-              stack.push(front->left);
+              s.push(front->left);
       }
  
         // the right child must be pushed first so that the left child
@@ -98,8 +98,8 @@ i)recursive
 void postorder(node* root){
   if(!root)
     return;
-  inorder(root->left); 
-  inorder(root->right);
+  postorder(root->left); 
+  postorder(root->right);
   cout << root->data;
 }
 
@@ -116,9 +116,6 @@ void postorder(Node* root)
     stack<Node*> s;
     s.push(root);
  
-    // create another stack to store postorder traversal
-    stack<int> out;
- 
     // loop till stack is empty
     while (!s.empty())
     {
@@ -126,7 +123,7 @@ void postorder(Node* root)
         Node* front = s.top();
         s.pop();
  
-        out.push(front->data);
+        cout<<front->data<< " ";
  
         // push the left and right child of the popped node into the stack
         if (front->left) {
@@ -136,12 +133,6 @@ void postorder(Node* root)
         if (front->right) {
             s.push(front->right);
         }
-    }
-    // print postorder traversal
-    while (!out.empty())
-    {
-        cout << out.top() << " ";
-        out.pop();
     }
 }
 
